@@ -1,0 +1,208 @@
+@import "../../shared/variables.scss";
+@import "../../shared/login_standard.scss";
+
+.signUpContent {
+    @include login_standard_container;
+    align-items: center;
+    overflow: hidden;
+}
+
+.signupContainer {
+    @include flex_column_center;
+    background-color: #eceefe;
+}
+
+label {
+    @include font(16px, 400, 19.2px);
+}
+
+.checkboxContent {
+    margin-right: auto;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .checkmark {
+        @include width_height(15px, 15px);
+        position: absolute;
+        top: -2px;
+        left: 0;
+        background-color: transparent;
+        border: 2px solid #797ef3;
+    }
+
+    &:hover .checkmark {
+        border-color: #444df2;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    .checkmark:after {
+        @include width_height(5px, 12px);
+        left: 4px;
+        top: -1px;
+        border: solid #444df2;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    }
+
+    a {
+        @include login_link;
+        border: none !important;
+
+        &:hover {
+            border: 1px solid #797ef3;
+            text-shadow: 0px 0px 1px black;
+        }
+    }
+}
+
+.nextBtn {
+    @include button;
+    @include button_primary;
+    @include button_hover;
+    margin-left: auto;
+    padding: 15px 25px;
+}
+
+button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+.notification {
+    @include font(20px, 400, 24px);
+}
+
+.success {
+    color: #444df2;
+}
+
+.warning {
+    color: red;
+}
+
+/******** This content style is for the avatar-choice container *********/
+
+.avatarContainer {
+    @include flex_column_center;
+    background-color: #eceefe;
+    position: relative;
+    gap: 30px;
+    width: 435px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 40px 70px;
+}
+
+.selectedAvatar {
+    height: 168px;
+    border-radius: 100%;
+}
+
+.userName {
+    @include font(32px, 700, 43.65px);
+}
+
+.chooseAvatarText {
+    @include font(20px, 400, 27.28px);
+    margin-right: auto;
+}
+
+.avatarSelectionContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.avatarSelection {
+    display: flex;
+
+    img {
+        height: 64px;
+        border-radius: 100%;
+        border: 5px solid white;
+        @include button_hover;
+
+        &:hover {
+            border: 5px solid #686868;
+        }
+    }
+}
+
+.uploadFoto {
+    @include align_items_center;
+    gap: 10px;
+    margin-right: auto;
+
+    span {
+        @include font(20px, 400, 27.28px);
+    }
+
+    button {
+        @include button_secondary;
+        @include button;
+        @include button_hover;
+        border: 1px solid #797ef3 !important;
+
+        &:hover {
+            background-color: #444df2;
+            color: white;
+        }
+    }
+}
+
+.uploadButton {
+    @include button_secondary;
+    @include button_hover;
+    @include button;
+    border: 1px solid #444df2;
+}
+
+.btnNext {
+    @include button_primary;
+    @include button;
+    @include button_hover;
+    margin-left: auto;
+}
+
+@media(max-width: 600px) {
+    .signUpContent {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 400px) and (max-height: 700px) {
+    .signUpContent {
+        height: unset;
+        gap: 25px;
+    }
+}
+
+@media (max-height: 500px) {
+    .signUpContent {
+        height: unset;
+        gap: 10px;
+    }
+} 
+

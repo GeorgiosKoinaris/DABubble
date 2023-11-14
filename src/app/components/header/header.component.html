@@ -1,0 +1,140 @@
+<div class="headerContainer">
+  <img
+    *ngIf="!this.messageService.headerChatMobile"
+    class="logoImg"
+    src="./assets/img/logo.svg"
+    alt=""
+  />
+  <div
+    ngClass="backArrowDiv"
+    *ngIf="this.messageService.headerChatMobile && screenWidth <= 630"
+    class="headerChatMobile"
+    (click)="navigateToSidenavMobile(); threadService.closeThreadService()"
+  >
+    <img
+      class="backArrow"
+      src="./assets/img/icons/arrow_back_responsive.svg"
+      alt=""
+    />
+    <img class="logoImg" src="./assets/img/codelearning.svg" alt="" />
+  </div>
+
+  <app-searchbar *ngIf="screenWidth > 630"></app-searchbar>
+
+  <div
+    class="headerProfileContent"
+    (click)="toggleMenu(); $event.stopPropagation()"
+  >
+    <div class="userName" *ngIf="user">{{ user.displayName }}</div>
+    <div class="userIconWrapper">
+      <img
+        class="userImg"
+        [src]="user?.photoURL"
+        (error)="retryLoadImage(user)"
+      />
+      <img
+        *ngIf="user?.isOnline"
+        class="statusIcon"
+        src="assets/img/icons/user_online.svg"
+        alt="Online"
+      />
+      <img
+        *ngIf="!user?.isOnline"
+        class="statusIcon"
+        src="assets/img/icons/user_offline.svg"
+        alt="Offline"
+      />
+    </div>
+    <div class="arrowDown"></div>
+    <div class="dropdownMenu" *ngIf="showMenu">
+      <a (click)="openDialog()">Profile</a>
+      <a (click)="onLogout(); $event.stopPropagation()">Logout</a>
+    </div>
+  </div>
+</div>
+
+<div
+  class="menuBackground"
+  (click)="showMenu = false"
+  [style.display]="showMenu ? 'block' : 'none'"
+></div>
+
+<!-- <div class="inputContainer">
+    <input
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange(searchTerm)"
+      (focus)="loadAllMessages()"
+      type="text"
+      placeholder="Search for code learning"
+    />
+    <img
+      class="inputContainerImg"
+      src="assets/img/icons/search_icon.svg"
+      alt="Search Icon"
+    /> -->
+
+<!-- Search dropdown list -->
+<!-- <div *ngIf="searchList" class="searchDropdown"> -->
+<!-- Users section -->
+<!-- <div
+        class="searchResult"
+        *ngIf="searchResults.users && searchResults.users.length"
+      >
+        <h2>Users</h2>
+        <div
+          class="searchResultContent"
+          *ngFor="let user of searchResults.users"
+        >
+          <img
+            class="userSearchImg"
+            [src]="user.photoURL"
+            alt="{{ user.displayName }}"
+            (error)="retryLoadImage(user)"
+          />
+          <span (click)="navigateToDirectMessage(user.uid)">{{
+            user.displayName
+          }}</span>
+        </div>
+      </div> -->
+
+<!-- Channels section -->
+<!-- <div
+        class="searchResult"
+        *ngIf="searchResults.channels && searchResults.channels.length"
+      >
+        <h2>Channels</h2>
+        <div
+          class="searchResultContent"
+          *ngFor="let channel of searchResults.channels"
+        >
+          <span (click)="navigateToChannel(channel.channelId)"
+            ># {{ channel.channelName }}</span
+          >
+        </div>
+      </div> -->
+
+<!-- Channel-messages section -->
+<!-- <div
+        class="searchResult"
+        *ngIf="
+          searchResults.channelMessages && searchResults.channelMessages.length
+        "
+      >
+        <h2>Channel-Messages</h2>
+        <div
+          class="searchResultContent"
+          *ngFor="let message of searchResults.channelMessages"
+        >
+          <span
+            (click)="
+              message.channelId && message.id
+                ? navigateToChannelMessage(message.channelId, message.id)
+                : null
+            "
+            >* {{ message.content }}</span
+          >
+        </div>
+      </div>
+    </div> -->
+<!-- Search dropdown list -->
+<!-- </div> -->

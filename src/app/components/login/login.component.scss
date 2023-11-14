@@ -1,0 +1,254 @@
+@import "../../shared/variables.scss";
+@import "../../shared/login_standard.scss";
+
+.signUpContainerMobile {
+    display: none;
+}
+
+.loginContent {
+    @include login_standard_container;
+}
+
+.loginContainer {
+    @include flex_column_center;
+    background-color: #eceefe;
+}
+
+.loginHeader {
+    @include space_between_center;
+    margin-top: 20px;
+
+    img {
+        margin-left: 75px;
+    }
+}
+
+.signUpContainer {
+    @include font(18px, 400, 24.55px);
+    @include flex_direction_column;
+    margin-right: 75px;
+
+    a {
+        padding: 5px 10px;
+    }
+}
+
+.forgotPasswordLink {
+    @include font(18px, 400, 21.6px);
+    @include button_hover;
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #797ef3;
+    border-radius: 30px;
+    transition: text-shadow 225ms ease;
+
+    &:hover {
+        font-size: 19px;
+        color: #444df2;
+        text-shadow: 0px 0px 1px black;
+        background-color: #eceefe;
+    }
+}
+
+.alternatively {
+    @include align_items_center;
+
+    div {
+        @include width_height(150px, 1px);
+        background-color: #adb0d9;
+    }
+
+    span {
+        @include font(18px, 400, 24.55px);
+        @include margin_left_right(10px, 10px);
+    }
+}
+
+.googleLoginBtn {
+    @include font(18px, 400, 21.6px);
+    @include button_hover;
+    @include width_height(100%, 14px);
+    @include flex_center;
+    background-color: #eceefe;
+    color: #444df2;
+    padding: 26px 50px;
+    text-align: left;
+    border: 1px solid white;
+    border-radius: 100px;
+    transition: text-shadow 225ms ease;
+
+    &::before {
+        @include width_height(30px, 30px);
+        content: "";
+        display: inline-block;
+        margin-right: 10px;
+        background-image: url("../../../assets/img/google_logo.svg");
+        background-size: cover;
+    }
+
+    &:hover {
+        border: 1px solid #444df2;
+        font-size: 19px;
+        text-shadow: 0px 0px 1px black;
+    }
+}
+
+.loginBottomContainer {
+    display: flex;
+    gap: 20px;
+
+    button {
+        @include button_hover;
+        @include button;
+    }
+}
+
+.loginBtn {
+    @include button_primary;
+}
+
+.guestLoginbtn {
+    @include button_secondary;
+    border: 1px solid #444df2;
+}
+
+/****************** Style for Login-Animation   *******************/
+.animationContainer {
+    @include justify_content_center;
+    @include width_height(100vw, 100vh);
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: flex-end;
+    transition: background 500ms ease-in-out;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.animationLogoName {
+    @include align_items_center;
+    position: relative;
+    margin-bottom: 250px;
+
+    .animationLogo {
+        z-index: 1;
+        padding-right: 100px;
+    }
+
+    .animationNameContainer {
+        position: absolute;
+        right: -280px;
+    }
+
+    .animationAppName {
+        @include font_size_weight(60px, 700);
+        white-space: nowrap;
+        color: white;
+    }
+}
+/****************** Style for Login-Animation   *******************/
+
+
+@media (max-width: 900px) {
+    .animationContainer {
+        align-items: center;
+    }
+
+    .animationLogoName {
+        margin: unset;
+
+        .animationLogo {
+            width: 85px;
+            padding-right: 80px;
+        }
+
+        .animationNameContainer {
+            right: -166px;
+        }
+
+        .animationAppName {
+            @include font_size_weight(35px, 600);
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .loginContent {
+        gap: 10px;
+    }
+
+    .loginHeader {
+        justify-content: center;
+
+        img {
+            height: 56px;
+            margin: unset;
+        }
+    }
+
+    .forgotPasswordLink {
+        @include font(17px, 400, 20.4px);
+    }
+
+    .googleLoginBtn {
+        @include font(17px, 400, 20.4px);
+    }
+
+    .signUpContainerMobile {
+        @include font(18px, 400, 24.55px);
+        @include column_align_center;
+
+        a {
+            padding: 5px 43px;
+            border: 1px solid #797ef3 !important;
+        }
+    }
+}
+
+@media (max-width: 400px) and (max-height: 700px) {
+    .loginContent {
+        height: unset;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .alternatively {
+        div {
+            width: 80px;
+        }
+    }
+}
+
+@media (max-width: 360px) {
+    .loginContent {
+        padding: 20px 0;
+    }
+
+    .loginHeader {
+        img {
+            height: 40px;
+        }
+    }
+
+    .alternatively {
+        div {
+            width: 45px;
+        }
+    }
+
+    .googleLoginBtn {
+        padding: unset;
+    }
+}
+
+@media (max-height: 500px) {
+    .loginContent {
+        height: unset;
+    }
+
+    .loginHeader {
+        margin-top: 25px;
+    }
+} 

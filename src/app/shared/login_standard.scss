@@ -1,0 +1,228 @@
+/***** Style for the login, signup, forgot-password and reset-password components *****/
+.mainLogoContainer {
+  width: 100%;
+  margin-left: 75px;
+  margin-top: 20px;
+
+  img {
+    height: 75px;
+  }
+}
+
+@mixin login_link {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  cursor: pointer;
+  transition: all 225ms ease-in-out;
+  color: #797ef3;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid #eceefe;
+  transition: text-shadow 225ms ease;
+
+  &:hover {
+    border: 1px solid #797ef3;
+    text-shadow: 0px 0px 1px black;
+  }
+}
+
+@mixin login_standard_container {
+  @include justify_space_between_column;
+  // gap: 50px;
+  height: 100vh;
+}
+
+form {
+  @include column_align_center;
+  position: relative;
+  gap: 30px;
+  width: 435px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 40px 50px;
+}
+
+.formHeaderText {
+  @include font(20px, 400, 24px);
+  text-align: center;
+}
+
+.goBackIcon {
+  padding-left: 10px;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 125ms ease-in-out;
+  background: url("../../assets/img/icons/arrow_back.svg");
+
+  &:hover {
+    background: url("../../assets/img/icons/arrow_back_hover.svg");
+    background-repeat: no-repeat;
+  }
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+
+  img {
+    position: absolute;
+    left: 25px;
+  }
+
+  input {
+    @include width_height(100%, 14px);
+    border: 1px solid white;
+    background-color: #eceefe;
+    border-radius: 100px;
+    padding: 28px 0 28px 60px;
+    box-sizing: border-box;
+    transition: all 225ms ease-in-out;
+
+    &:focus {
+      outline: 1px solid #444df2;
+    }
+
+    &:hover {
+      border: 1px solid #686868;
+    }
+
+    ::placeholder {
+      @include font(18px, 500, 21.6px);
+    }
+  }
+}
+
+.userImg {
+  height: 15px;
+  top: 20px;
+  left: 8px !important;
+}
+
+.mailImg {
+  height: 13px;
+  top: 21px;
+}
+
+.passwordImg {
+  height: 18px;
+  top: 16px;
+}
+
+h1 {
+  @include font(46px, 700, 55.2px);
+  color: #444df2;
+  margin: 0;
+}
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.notification {
+  @include font(20px, 400, 24px);
+}
+
+.warning {
+  color: red;
+}
+
+.loginContainerLinks {
+  @include flex_center;
+  gap: 50px;
+
+  a {
+    padding: 10px 20px;
+  }
+}
+
+.loginLinks {
+  @include login_link;
+  text-align: center;
+  line-height: 24.5px !important;
+}
+
+.loginHeadline {
+  display: flex;
+  margin-right: auto;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .mainLogoContainer {
+    margin: unset;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 65px;
+    }
+  }
+
+  form {
+    width: 80vw;
+  }
+
+  h1 {
+    @include font(32px, 700, 38.4px);
+  }
+
+  .formHeaderText {
+    @include font(17px, 400, 20.4px);
+  }
+
+  .hideContentMobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 500px) {
+  form {
+    padding: 35px 25px;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 360px) {
+  form {
+    padding: 20px 15px;
+    gap: 15px;
+  }
+
+  button {
+    font-size: 16px !important;
+    height: 50px !important;
+    padding: 0 19px !important;
+  }
+}
+
+@media (max-height: 500px) {
+  .mainLogoContainer {
+    margin: unset;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 65px;
+    }
+  }
+
+  .loginContainerLinks {
+    position: relative;
+    bottom: 10px;
+  }
+
+  .mainLogoContainer {
+    margin-top: 25px;
+  }
+}
+
+/***** Style for the login, signup, forgot-password and reset-password components *****/

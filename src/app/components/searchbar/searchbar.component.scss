@@ -1,0 +1,151 @@
+@import "../../shared/variables.scss";
+
+.inputContainerImg {
+  position: absolute;
+  right: 20px;
+}
+
+.inputContainer {
+  @include align_items_center;
+  @include margin_left_right(55px, 70px);
+  height: 70px;
+  position: relative;
+
+  .inputContainerImg {
+    position: absolute;
+    right: 20px;
+  }
+
+  input {
+    @include width_height(100%, 14px);
+    @include font_size_weight(24px, 400);
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 100px;
+    padding: 28px 0 28px 40px;
+    box-sizing: border-box;
+    transition: all 125ms ease-in-out;
+    color: #686868;
+
+    &:focus {
+      outline: 1px solid #444df2;
+    }
+
+    &:hover {
+      border: 1px solid #686868;
+    }
+
+    ::placeholder {
+      @include font(24px, 400, 32.74px);
+    }
+  }
+}
+
+.scrollableContainer {
+  height: unset;
+  max-height: 330px;
+}
+
+.searchDropdown {
+  @include flex_column_center;
+  @include font_size_weight(18px, 400);
+  display: flex;
+  background-color: #eceefe;
+  gap: 40px;
+  position: absolute;
+  top: 65px;
+  min-width: 300px;
+  padding: 10px;
+  z-index: 999;
+  border-radius: 10px;
+
+  .searchResult {
+    @include flex_column_center;
+    gap: 25px;
+  }
+
+  .searchResultContent {
+    @include flex_center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+
+    &:hover {
+      @include button_hover;
+      background-color: #797ef3;
+      color: white;
+      padding: 5px;
+    }
+
+    .userSearchImg {
+      @include width_height(40px, 40px);
+      border-radius: 100%;
+    }
+  }
+}
+
+/////////////////////// responsive design start here ///////////////////////////
+
+@media (max-width: 1210px) {
+  .inputContainer {
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .inputContainer {
+    input {
+      font-size: 18px;
+      padding: 28px 0 28px 20px;
+    }
+  }
+}
+
+@media (max-width: 825px) {
+  .inputContainer {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 770px) {
+  .inputContainer {
+    margin-left: 75px;
+  }
+}
+
+@media (max-width: 720px) {
+  .inputContainer {
+    margin-left: 25px;
+  }
+}
+
+@media (max-width: 670px) {
+  .inputContainer input::placeholder {
+    color: white;
+  }
+}
+
+@media (max-width: 630px) {
+  .inputContainer {
+    input {
+      border: 1px solid #686868;
+    }
+  }
+  .inputContainer input::placeholder {
+    color: unset;
+  }
+}
+@media (max-width: 345px) {
+  .searchDropdown {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 340px) {
+  .inputContainer {
+    input {
+      font-size: 15px;
+    }
+  }
+}

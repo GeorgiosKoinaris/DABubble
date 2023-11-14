@@ -1,0 +1,90 @@
+@import '../../shared/variables.scss';
+
+.profileContainer {
+    @include profileContainer;
+    gap: 25px !important;
+}
+
+.profileHeader {
+    @include profileHeader;
+}
+
+.userImgEditProfile {
+    @include userImg;
+}
+
+form {
+    @include flex_column_center;
+    width: 100%;
+    gap: 5px;
+
+    input {
+        width: 100%;
+        border: 1px solid white;
+        background-color: #ECEEFE;
+        border-radius: 100px;
+        padding: 15px;
+        box-sizing: border-box;
+        transition: all 225ms ease-in-out;
+
+        &:focus {
+            outline: 1px solid #444df2;
+        }
+
+        &:hover {
+            border: 1px solid #686868;
+        }
+
+        ::placeholder {
+            @include font(18px, 500, 21.6px);
+        }
+    }
+}
+
+.inputHeadline {
+    display: flex;
+    gap: 15px;    
+    margin-right: auto;
+
+    span {
+        @include font(20px, 700, 27.28px);
+    }
+}
+
+.accountIcon {
+    height: 25px;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.cancelBtn {
+    @include button_secondary;
+    @include button_hover;
+    @include font(18px, 700, 24.55px);
+    border: 1px solid #797EF3;
+    padding: 15px 25px; 
+    border-radius: 50px
+}
+
+.submitBtn {
+    @include button_primary;
+    @include button_hover;
+    @include font(18px, 700, 24.55px);
+    padding: 15px 25px;
+    border-radius: 50px
+}
+
+.menu-image {
+    width: 50px;
+    height: 50px;
+}
+
+@media (max-width: 370px) {
+    .buttonContainer {
+        margin: unset;
+    }
+}

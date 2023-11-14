@@ -1,0 +1,384 @@
+@import "../../shared/variables.scss";
+
+//////////////////////general styles//////////////////////////
+.padding {
+  padding: 25px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+/////////////////////specific styles///////////////////////////
+
+.head-of-sidenav {
+  @include flex_center;
+
+  .main-channel-img {
+    height: 52px;
+  }
+
+  .icon-div {
+    @include flex_center;
+    @include width_height(35px, 35px);
+
+    img {
+      height: 20px;
+    }
+
+    &:hover {
+      @include button_hover;
+      border-radius: 100%;
+      background-color: #eceefe;
+
+      img {
+        transform: scale(1.1);
+        filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+          saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+      }
+    }
+  }
+}
+
+.headMenu {
+  @include space_between_center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 35px;
+  padding-right: 35px;
+
+  p {
+    @include font_size_weight(20px, 700);
+    margin: 0;
+  }
+
+  .icon-div {
+    @include flex_center;
+    @include width_height(25px, 25px);
+    padding: 5px;
+
+    img {
+      height: 14px;
+    }
+
+    &:hover {
+      @include button_hover;
+      border-radius: 100%;
+      background-color: #eceefe;
+
+      img {
+        transform: scale(1.1);
+        filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+          saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+      }
+    }
+  }
+}
+
+.headName {
+  display: flex;
+
+  .firstImg {
+    margin-right: 25px;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    .firstImg {
+      transform: scale(1.1);
+    }
+
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%)
+      hue-rotate(230deg) brightness(99%) contrast(91%);
+  }
+}
+
+#allChannels {
+  .channel {
+    @include align_items_center;
+    padding-left: 40px;
+    margin-bottom: 12px;
+    height: 30px;
+
+    img {
+      margin-inline-start: 25px;
+      height: 16px;
+      margin-right: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 0;
+      width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      @include button_hover;
+      background-color: #eceefe;
+      border-radius: 20px;
+
+      img,
+      p {
+        filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+          saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.addChannel {
+  @include align_items_center;
+  margin: 30px 0px 20px 63px;
+
+  img {
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  &:hover {
+    @include button_hover;
+
+    img,
+    p {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+    }
+  }
+}
+
+ul {
+  padding-inline-start: 0px;
+}
+
+.selectableUserChat {
+  @include align_items_center;
+  padding: 5px 10px 5px 55px;
+  margin: 5px 0 5px 0;
+
+  img {
+    border-radius: 100%;
+    margin-right: 10px;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+    border-radius: 20px;
+
+    p {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+      font-weight: 600;
+    }
+  }
+}
+
+.scrollableContainer {
+  height: 69vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.userImg {
+  height: 50px;
+}
+
+.userIconWrapper {
+  position: relative;
+}
+
+.statusIcon {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  height: 15px;
+}
+
+.unreadCount {
+  @include width_height(10px, 10px);
+  background-color: #797ef3;
+  border-radius: 100%;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.activeChannelLiElement {
+  background-color: #eceefe;
+  border-radius: 20px;
+}
+
+.activeChannelImgAndPElement {
+  filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%)
+    hue-rotate(230deg) brightness(99%) contrast(91%);
+  font-weight: 600;
+}
+
+/////////////////////// responsive design start here ///////////////////////////
+
+@media (max-width: 1210px) {
+  .padding {
+    padding: 20px 10px 20px 10px;
+  }
+
+  .head-of-sidenav {
+    .main-channel-img {
+      height: 48px;
+    }
+  }
+
+  .headName {
+    .firstImg {
+      margin-right: 18px;
+    }
+  }
+
+  .headMenu {
+    @include padding_left_right(25px, 25px);
+  }
+
+  #allChannels {
+    .channel {
+      padding-left: 25px;
+    }
+  }
+
+  .addChannel {
+    margin: 30px 0px 20px 45px;
+  }
+
+  .selectableUserChat {
+    padding: 5px 10px 5px 40px;
+  }
+}
+
+//////////////////////start media design here/////////////////////
+
+@media (max-width: 630px) {
+  .scrollableContainer {
+    height: 75vh;
+  }
+  .headMenu {
+    p {
+      font-size: 24px;
+    }
+  }
+  #allChannels {
+    .channel {
+      p {
+        font-size: 20px;
+        overflow: unset;
+      }
+    }
+  }
+  .selectableUserChat {
+    p {
+      font-size: 20px;
+    }
+  }
+  .head-of-sidenav {
+    .icon-div {
+      @include width_height(60px, 60px);
+      position: absolute;
+      bottom: 50px;
+      right: 45px;
+      background-color: #555cf1;
+      border-radius: 100%;
+      img {
+        filter: invert(100%);
+      }
+      &:hover {
+        transition: all 225ms ease-in-out;
+        background-color: #555cf1;
+        img {
+          transform: scale(1.1);
+          filter: invert(100%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .headMenu {
+    p {
+      font-size: 20px;
+    }
+  }
+  #allChannels {
+    .channel {
+      p {
+        font-size: 18px;
+        overflow: unset;
+      }
+    }
+  }
+  .selectableUserChat {
+    p {
+      font-size: 18px;
+    }
+  }
+}
+@media (max-width: 375px) {
+  .scrollableContainer {
+    height: 72vh;
+  }
+}
+@media (max-width: 295px) {
+  .scrollableContainer {
+    height: 70vh;
+  }
+}
+
+/////////////////////// landscape design start here ///////////////////////////
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .headMenu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .padding {
+    padding: 10px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 450px) {
+  .scrollableContainer {
+    height: 52vh;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .scrollableContainer {
+    height: 50vh;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 380px) {
+  .scrollableContainer {
+    height: 48vh;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 350px) {
+  .scrollableContainer {
+    height: 46vh;
+  }
+}

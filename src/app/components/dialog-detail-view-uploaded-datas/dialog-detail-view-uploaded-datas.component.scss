@@ -1,0 +1,35 @@
+@import '../../shared/variables.scss';
+
+
+.dialogMainContainer {
+    @include flex_center;
+    @include width_height(60vw, 80vh);
+    position: relative;
+}
+
+.uploadedImage {
+    @include width_height(45vw, 55vh);
+}
+
+.containerCloseIcon {
+    border-radius: 50%;
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    padding: 8px;
+
+    &:hover {
+        @include button_hover;
+        background-color: #eceefe;
+    }
+
+    img {
+
+        &:hover {
+            @include button_hover;
+            transform: scale(1.1);
+            filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+        }
+    }
+}

@@ -1,0 +1,132 @@
+@import "../../shared/variables.scss";
+
+.messageMainContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px 0px 20px 50px;
+    margin-top: 20px;
+
+    &:hover {
+        @include button_hover;
+        background-color: #eceefe;
+
+        .messageText {
+            background-color: white;
+        }
+
+        .lastAnswer {
+            color: black;
+        }
+    }
+}
+
+.messageChildContainer {
+    @include flex_direction_column;
+    gap: 10px;
+}
+
+.profileImg {
+    border-radius: 50%;
+}
+
+.containerUserNameAndTime {
+    @include flex_direction_column;
+    gap: 20px;
+}
+
+.userName {
+    @include font_size_weight(18px, 700);
+    margin: 0;
+
+    &:hover {
+        transition: all 225ms ease-in-out;
+        color: #444df2;
+        font-weight: bolder;
+    }
+}
+
+.time {
+    @include font_size_weight(14px, 400);
+    margin: 0;
+    color: #686868;
+}
+
+.messageText {
+    @include font_size_weight(14px, 400);
+    padding: 15px;
+    margin: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #eceefe;
+}
+
+.containerAmountOfAnswers {
+    display: flex;
+    gap: 20px;
+}
+
+.answers {
+    @include font_size_weight(18px, 400);
+    margin: 0;
+    color: #535af1;
+
+    &:hover {
+        transition: all 225ms ease-in-out;
+        color: #444df2;
+        font-weight: bolder;
+    }
+}
+
+.lastAnswer {
+    @include font_size_weight(14px, 400);
+    margin: 0;
+    color: #686868;
+}
+
+.containerEmojis {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: -22px;
+    right: 60px;
+    padding: 5px 20px 5px 20px;
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border: 1px solid #adb0d9;
+    background-color: white;
+
+    &:hover {
+        .messageMainContainer {
+            background-color: #eceefe;
+        }
+    }
+}
+
+.completeEmoji {
+    @include messageEmojis;
+}
+
+.handsUpEmoji {
+    @include messageEmojis;
+}
+
+.containerAddEmojiIcon {
+    display: flex;
+    @include messageEmojis;
+
+    img {
+        @include messageContainerImg;
+    }
+}
+
+.containerAnswerOnThreadIcon {
+    display: flex;
+    @include messageEmojis;
+
+    img {
+        @include messageContainerImg;
+    }
+}

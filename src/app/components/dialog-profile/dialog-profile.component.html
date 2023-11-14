@@ -1,0 +1,24 @@
+<div class="profileContainer">
+    <div class="profileHeader">
+        <p>Profile</p>
+        <div mat-dialog-close title="Close window"></div>
+    </div>
+    <img *ngIf="user?.photoURL" class="userImgProfile" [src]="user?.photoURL" (error)="retryLoadImage()">
+    <div class="userNameEdit">
+        <div> {{ user?.displayName }} </div>
+        <a (click)="openDialog()">Edit profile</a>
+        <img src="assets/img/icons/edit_button.svg" alt="Edit profile">
+    </div> 
+
+    <div class="status" [ngClass]="{'online': isOnline, 'away': !isOnline}">
+        <span class="circle"></span> {{ isOnline ? 'Online' : 'Offline' }}
+    </div>
+
+    <div class="profileBottom">
+        <img class="mailIcon" src="assets/img/icons/mail_icon_profile.svg" alt="Mail Icon">
+        <div class="mailContainer">
+            <span>Email-Adress</span>
+            <a href="mailto:{{ user.email }}" *ngIf="user" title="{{ user.email }}">{{ user.email }}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,332 @@
+@mixin justify_content_center {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin align_items_center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin space_between {
+    display: flex;
+    justify-content: space-between;
+}
+
+@mixin space_between_center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex_direction_column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin column_align_center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin colum_justify_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin justify_space_between_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@mixin flex_column_center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button {
+    @include font(18px, 700, 24.5px);
+    border-radius: 25px;
+    padding: 15px 25px;
+}
+
+@mixin button_primary {
+    color: white;
+    background-color: #444df2;
+    border: unset;
+    font-family: Nunito, sans-serif;
+
+    &:hover {
+        cursor: pointer;
+        transition: all 225ms ease-in-out;
+        background-color: #797ef3;
+    }
+}
+
+@mixin button_primary_disabled {
+    color: white;
+    background-color: #686868 !important;
+    border: unset;
+    font-family: Nunito, sans-serif;
+}
+
+@mixin button_secondary {
+    color: #444df2;
+    background-color: white;
+    font-family: Nunito, sans-serif;
+
+    &:hover {
+        color: white;
+        background-color: #535af1;
+        transition: all 225ms ease-in-out;
+    }
+}
+
+@mixin button_hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+}
+
+@mixin font($size, $weight, $line) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line;
+}
+
+@mixin font_size_weight($size, $weight) {
+    font-size: $size;
+    font-weight: $weight;
+}
+
+@mixin width_height($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin margin_left_right($ml, $mr) {
+    margin-left: $ml;
+    margin-right: $mr;
+}
+
+@mixin padding_left_right($pl, $pr) {
+    padding-left: $pl;
+    padding-right: $pr;
+}
+
+@mixin focus_input_or_textarea {
+    &:focus {
+        border: 1px solid #797ef3;
+    }
+}
+
+@mixin hover_input_or_textarea {
+    &:hover {
+        border: 1px solid #797ef3;
+    }
+}
+
+/*********************** Style for the dialog-profile-components **********************/
+@mixin profileContainer {
+    @include flex_column_center;
+    height: 100%;
+    position: relative;
+    z-index: 3;
+    gap: 40px;
+    padding: 0 40px;
+}
+
+@mixin profileHeader {
+    @include space_between_center;
+    width: 100%;
+
+    p {
+        @include font(24px, 700, 32.74px);
+    }
+
+    div {
+        @include button_hover;
+        @include width_height(40px, 40px);
+        background: url("../../assets/img/icons/closeIcon.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:hover {
+            background: url("../../assets/img/icons/close_icon_hover.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
+
+@mixin userImg {
+    width: 215px;
+    border-radius: 100%;
+}
+
+@mixin userNameEdit {
+    @include space_between_center;
+    width: 100%;
+
+    div {
+        @include font(32px, 700, 43.65px);
+    }
+
+    a {
+        @include font(18px, 600, 24.55px);
+        @include button_hover;
+        color: #535af1;
+
+        &:hover {
+            font-weight: 800;
+        }
+    }
+}
+
+@mixin status {
+    @include font(20px, 400, 27.28px);
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+
+    &.online {
+        color: #92c83e;
+
+        .circle {
+            background-color: #92c83e;
+        }
+    }
+
+    &.away {
+        color: #686868;
+
+        .circle {
+            background-color: #686868;
+        }
+    }
+}
+
+@mixin circle {
+    @include width_height(15px, 15px);
+    display: inline-block;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+@mixin profileBottom {
+    display: flex;
+    flex-direction: row !important;
+    gap: 20px;
+    align-items: baseline;
+    margin-right: auto;
+    width: 100%;
+}
+
+@mixin profileIconsText {
+    @include font(20px, 700, 27.28px);
+    @include flex_direction_column;
+    gap: 15px;
+    width: 100%;
+
+    a {
+        @include font(19px, 500, 21.6px);
+        @include button_hover;
+        color: #1381ff;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        max-width: 100%;
+
+        &:hover {
+            font-weight: 600;
+        }
+    }
+}
+
+/*********************** Style for the dialog-profile-components **********************/
+
+/*********************** Style for icons in chat **********************/
+@mixin chatIconStandard {
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+
+    &:hover {
+        cursor: pointer;
+        transition: all 225ms ease-in-out;
+        background-color: #eceefe;
+    }
+
+    img {
+        &:hover {
+            transition: all 225ms ease-in-out;
+            transform: scale(1.05);
+            filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg)
+                brightness(99%) contrast(91%);
+        }
+    }
+}
+
+/*********************** Style for icons in chat **********************/
+
+/*********************** Style for message component **********************/
+@mixin messageEmojis {
+    padding: 8px;
+    border-radius: 50%;
+
+    &:hover {
+        cursor: pointer;
+        transition: all 225ms ease-in-out;
+        background-color: #eceefe;
+    }
+}
+
+@mixin messageContainerImg {
+    
+    &:hover {
+        cursor: pointer;
+        transition: all 225ms ease-in-out;
+        transform: scale(1.05);
+        filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+            contrast(91%);
+    }
+}
+
+/*********************** Style for message component **********************/
+
+
+/*********************** Style for new-message component **********************/
+    @mixin newMessageEmojis {
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+      
+        &:hover {
+          cursor: pointer;
+          transition: all 225ms ease-in-out;
+          background-color: #eceefe;
+        }
+      
+        img {
+          &:hover {
+            transition: all 225ms ease-in-out;
+            transform: scale(1.05);
+            filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+              contrast(91%);
+          }
+        }
+    }
+
+/*********************** Style for new-message component **********************/

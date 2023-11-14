@@ -1,0 +1,133 @@
+<div class="head-of-sidenav padding">
+  <img
+    *ngIf="screenWidth > 631"
+    class="main-channel-img"
+    src="./assets/img/codelearning.svg"
+    alt=""
+  />
+  <div
+    [routerLink]="['/content/new-message']"
+    class="icon-div"
+    (click)="openNewMessageMobile()"
+  >
+    <img src="./assets/img/icons/edit_square.svg" alt="" title="New message" />
+  </div>
+</div>
+<app-searchbar *ngIf="screenWidth < 631"></app-searchbar>
+
+<!---------------- channels menu start here ------------------------------------------->
+
+<div class="scrollableContainer">
+  <div class="headMenu">
+    <div class="headName" (click)="hideChannels()">
+      <img
+        class="firstImg"
+        [ngStyle]="{
+          transform: arrowImageRotatedChannel
+            ? 'rotate(-90deg)'
+            : 'rotate(0deg)'
+        }"
+        src="./assets/img/icons/arrow_drop_down.svg"
+        alt=""
+      />
+      <img src="./assets/img/icons/workspaces.svg" alt="" />
+      <p>Channels</p>
+    </div>
+    <div class="icon-div" (click)="openDialogToCreateChannel()">
+      <img src="./assets/img/icons/add.svg" alt="" title="Add channel" />
+    </div>
+  </div>
+
+  <!---------------- channels list start here ----------------->
+
+  <ul
+    id="allChannels"
+    [ngStyle]="{ display: channelsVisible ? 'unset' : 'none' }"
+  >
+    <li
+      [routerLinkActive]="'activeChannelLiElement'"
+      [routerLink]="['/content/channel', channel.id]"
+      *ngFor="let channel of channelService.channelData | async"
+      class="channel"
+      (click)="onChannelClick(channel.id)"
+    >
+      <img
+        [routerLinkActive]="'activeChannelImgAndPElement'"
+        src="./assets/img/icons/tag.svg"
+        alt=""
+      />
+      <p [routerLinkActive]="'activeChannelImgAndPElement'">
+        {{ channel.channelName }}
+      </p>
+      <span
+        *ngIf="!channel.readBy?.includes((loggedInUser | async)?.uid)"
+        class="unreadCount"
+      ></span>
+    </li>
+  </ul>
+
+  <!---------------- channels can be added here ----------------->
+  <div
+    id="addChannel"
+    [ngStyle]="{ display: channelsVisible ? 'flex' : 'none' }"
+    class="addChannel"
+    (click)="openDialogToCreateChannel()"
+  >
+    <img src="./assets/img/icons/add_circle.svg" alt="" />
+    <p>Add new Channel</p>
+  </div>
+
+  <!---------------------- end of channels menu ------------------------------------------->
+
+  <!------------------- direct messages menu start here ----------------------------------->
+  <div class="headMenu">
+    <div class="headName" (click)="hideChats()">
+      <img
+        class="firstImg"
+        [ngStyle]="{
+          transform: arrowImageRotatedChat ? 'rotate(-90deg)' : 'rotate(0deg)'
+        }"
+        src="./assets/img/icons/arrow_drop_down.svg"
+        alt=""
+      />
+      <img src="./assets/img/icons/account_circle.svg" alt="" />
+      <p>Direct messages</p>
+    </div>
+  </div>
+
+  <!---------------- direct messages list start here ----------------->
+  <ul
+    *ngFor="let user of users"
+    id="directMessagesList"
+    [ngStyle]="{ display: chatsVisible ? 'unset' : 'none' }"
+  >
+    <li class="selectableUserChat" (click)="onUserClick(user)">
+      <div class="userIconWrapper">
+        <img
+          class="userImg"
+          [src]="user.photoURL"
+          (error)="retryLoadImage(user)"
+        />
+        <img
+          *ngIf="user?.isOnline"
+          class="statusIcon"
+          src="assets/img/icons/user_online.svg"
+          alt="Online"
+        />
+        <img
+          *ngIf="!user?.isOnline"
+          class="statusIcon"
+          src="assets/img/icons/user_offline.svg"
+          alt="Offline"
+        />
+      </div>
+      <p>{{ user.displayName }}</p>
+      <span
+        *ngIf="
+          (loggedInUser | async)?.hasUnreadMessages?.includes(user.uid ?? '')
+        "
+        class="unreadCount"
+      ></span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,28 @@
+@import '../../shared/variables.scss';
+
+.dialogMainContainer {
+    @include width_height(450px, 200px);
+    @include flex_column_center;
+    padding: 25px;
+
+    p {
+        @include font_size_weight(24px, 700);
+        margin: 0;
+        font-weight: 700;
+        font-size: 24px;
+    }
+}
+
+.btnContainer {
+    @include justify_content_center;
+    margin-top: 50px;
+
+    button {
+        @include font_size_weight(18px, 700);
+        @include width_height(150px, 60px);
+        font-size: 18px;
+        font-weight: 700;
+        border-radius: 25px;
+        @include button_primary;
+    }
+}

@@ -1,0 +1,36 @@
+<div class="dialogMainContainer">
+  <div class="topContainerShowUser">
+    <p>Members</p>
+
+    <div class="closeIconContainer">
+      <img
+        mat-dialog-close
+        src="assets/img/icons/closeIcon.svg"
+        title="Close window"
+      />
+    </div>
+  </div>
+
+  <div>
+    <div class="scrollableContainerForUsers">
+      <div
+        *ngFor="let user of channelService.channel.users"
+        class="unserContainer"
+      >
+        <img class="user" [src]="user.photoURL" />
+        <p>{{ user.displayName }}</p>
+      </div>
+    </div>
+
+    <div
+      class="addUserIconMainContainer"
+      (click)="openDialogToAddMembersToChannel()"
+    >
+      <div class="addUserIconContainer">
+        <img class="addUserIcon" src="assets/img/icons/addUser.svg" />
+      </div>
+
+      <p>Add Members</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+@import "../../shared/variables.scss";
+
+.daBubbleIcon {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+}
+
+.topPadding {
+  padding-top: 10px;
+}
+
+.containerImprint {
+  @include flex_direction_column;
+  align-items: flex-start;
+  background-color: white;
+  gap: 20px;
+  border-radius: 30px;
+  padding: 40px;
+  width: 80vw;
+
+  h1 {
+    @include font_size_weight(46px, 700);
+    font-family: Nunito, sans-serif;
+    color: #444df2;
+  }
+
+  h2 {
+    @include font_size_weight(32px, 700);
+    font-family: Nunito, sans-serif;
+    color: #444df2;
+  }
+
+  p {
+    @include font_size_weight(20px, 400);
+    font-family: Nunito, sans-serif;
+  }
+
+  a {
+    color: #444df2;
+  }
+}
+
+.containerArrowBack {
+  border-radius: 50%;
+  display: flex;
+
+  &:hover {
+    background-color: #eceefe;
+    @include button_hover;
+  }
+
+  img {
+    &:hover {
+      @include button_hover;
+      filter: brightness(0) saturate(100%) invert(32%) sepia(83%) saturate(2459%) hue-rotate(227deg) brightness(94%)
+        contrast(102%);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .daBubbleIcon {
+    position: unset;
+
+    img {
+      height: 65px;
+    }
+  }
+
+  .imprintAndDataProtectionContainer {
+    @include column_align_center;
+
+    h1 {
+      @include font(38px, 600, 40px);
+    }
+
+    h2 {
+      @include font_size_weight(28px, 600);
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+}

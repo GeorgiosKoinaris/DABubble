@@ -1,0 +1,181 @@
+<div class="dialogMainContainer">
+  <div class="dialogTopContainer">
+    <div class="dialogTopChildContainer">
+      <img src="assets/img/icons/hashtag.svg" />
+      <p>{{ data.channelName }}</p>
+    </div>
+
+    <div class="closeIconContainer">
+      <img
+        mat-dialog-close
+        src="assets/img/icons/closeIcon.svg"
+        title="Close window"
+      />
+    </div>
+  </div>
+
+  <div
+    [class.removeBorder]="showInputToEditChannelName"
+    class="dialogMiddleContainer"
+  >
+    <div
+      [ngClass]="{
+        translateToTop: showInputToEditChannelName,
+        translateToTBottom: !showInputToEditChannelName
+      }"
+      class="textChannelNameAndEditContainer"
+    >
+      <p class="textChannelName">Channel Name</p>
+      <button
+        [disabled]="
+          data.channelName == 'html/css' ||
+          data.channelName == 'javascript' ||
+          data.channelName == 'angular'
+        "
+        [class.disableSaveBtn]="
+          data.channelName == 'html/css' ||
+          data.channelName == 'javascript' ||
+          data.channelName == 'angular'
+        "
+        [class.d-none]="showInputToEditChannelName"
+        (click)="openInputToEditChannelName()"
+        class="textEdit"
+      >
+        Edit
+      </button>
+
+      <!------------------------ Only displayed when editing the channel name ------------------------>
+      <button
+        [disabled]="data.channelName == '' || !channelNameHasChanged"
+        [class.disableSaveBtn]="
+          data.channelName == '' || !channelNameHasChanged
+        "
+        [class.show]="showInputToEditChannelName"
+        (click)="closeInputToEditChannelNameAndSafeChanges()"
+        class="textEdit d-none"
+      >
+        Save
+      </button>
+      <!------------------------ Only displayed when editing the channel name ------------------------>
+    </div>
+
+    <div
+      [class.d-none]="showInputToEditChannelName"
+      class="channelNameAndHashtagIconContainer"
+    >
+      <img src="assets/img/icons/hashtag.svg" />
+      <p>{{ data.channelName }}</p>
+    </div>
+
+    <!------------------------ Only displayed when editing the channel name ------------------------>
+    <div
+      [class.show]="showInputToEditChannelName"
+      class="inputContainer d-none"
+    >
+      <img src="assets/img/icons/hashtag.svg" />
+      <input
+        (ngModelChange)="getValueForNewChannelName($event)"
+        [(ngModel)]="data.channelName"
+        type="text"
+        [placeholder]="data.channelName"
+      />
+    </div>
+    <!------------------------ Only displayed when editing the channel name ------------------------>
+  </div>
+
+  <div
+    [class.removeBorder]="showInputToEditChannelDescription"
+    class="dialogBottomContainer"
+  >
+    <div
+      [ngClass]="{
+        translateToTop: showInputToEditChannelDescription,
+        translateToTBottom: !showInputToEditChannelDescription
+      }"
+      class="textChannelNameAndEditContainer"
+    >
+      <p class="textChannelName">Description</p>
+      <button
+        [disabled]="
+          data.channelName == 'html/css' ||
+          data.channelName == 'javascript' ||
+          data.channelName == 'angular'
+        "
+        [class.disableSaveBtn]="
+          data.channelName == 'html/css' ||
+          data.channelName == 'javascript' ||
+          data.channelName == 'angular'
+        "
+        [class.d-none]="showInputToEditChannelDescription"
+        class="textEdit"
+        (click)="openInputToEditChannelDescription()"
+      >
+        Edit
+      </button>
+
+      <!------------------------ Only displayed when editing the channel description ------------------------>
+      <button
+        [disabled]="!channelDescriptionHasChanged"
+        [class.disableSaveBtn]="!channelDescriptionHasChanged"
+        (click)="closeInputToEditChannelDescriptionAndSafeChanges()"
+        [class.show]="showInputToEditChannelDescription"
+        class="textEdit d-none"
+      >
+        Save
+      </button>
+      <!------------------------ Only displayed when editing the channel description ------------------------>
+    </div>
+
+    <p [class.d-none]="showInputToEditChannelDescription">
+      {{
+        channelService.channel.channelDescription
+          ? channelService.channel.channelDescription
+          : "Here stand the Channel Description"
+      }}
+    </p>
+
+    <!------------------------ Only displayed when editing the channel description ------------------------>
+    <div
+      [class.show]="showInputToEditChannelDescription"
+      class="inputContainer d-none"
+    >
+      <input
+        (ngModelChange)="getValueForNewChannelDescription($event)"
+        [(ngModel)]="data.channelDescription"
+        type="text"
+        placeholder="Your text here"
+      />
+    </div>
+    <!------------------------ Only displayed when editing the channel description ------------------------>
+
+    <hr />
+    <p class="textCreatedBy">Created by</p>
+    <p class="userName">
+      {{
+        channelService.channel.channelCreatedBy?.displayName ||
+          "User Name (Placeholder)"
+      }}
+    </p>
+  </div>
+
+  <div class="btnContainer">
+    <button
+      [disabled]="
+        data.channelName == 'html/css' ||
+        data.channelName == 'javascript' ||
+        data.channelName == 'angular'
+      "
+      [class.disableLeaveChannelBtn]="
+        data.channelName == 'html/css' ||
+        data.channelName == 'javascript' ||
+        data.channelName == 'angular'
+      "
+      (click)="channelService.deleteChannelService(data.channelId)"
+      mat-button
+      mat-dialog-close
+      color="primary"
+    >
+      Leave Channel
+    </button>
+  </div>
+</div>

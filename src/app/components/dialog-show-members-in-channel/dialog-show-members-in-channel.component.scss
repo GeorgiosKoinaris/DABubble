@@ -1,0 +1,112 @@
+@import "../../shared/variables.scss";
+
+.dialogMainContainer {
+  width: 350px;
+  padding: 25px;
+}
+
+.topContainerShowUser {
+  @include space_between_center;
+
+  p {
+    @include font_size_weight(24px, 700);
+    margin: 0;
+  }
+}
+
+.closeIconContainer {
+  display: flex;
+  padding: 8px;
+  border-radius: 20px;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+  }
+
+  img {
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+        contrast(91%);
+    }
+  }
+}
+
+.scrollableContainerForUsers {
+  @include flex_direction_column;
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  gap: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      display: flex;
+    }
+  }
+}
+
+.unserContainer {
+  @include align_items_center;
+  gap: 15px;
+  border-radius: 20px;
+  padding: 5px 100px 5px 10px;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+  }
+
+  p {
+    @include font_size_weight(18px, 400);
+    margin: 0;
+  }
+}
+
+.user {
+  border-radius: 50%;
+  width: 40px;
+}
+
+.addUserIconMainContainer {
+  @include align_items_center;
+  gap: 15px;
+  border-radius: 20px;
+  padding: 5px 100px 5px 10px;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+
+    p {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+        contrast(91%);
+    }
+
+    .addUserIcon {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+        contrast(91%);
+      transform: scale(1.1);
+    }
+  }
+
+  p {
+    @include font_size_weight(18px, 400);
+    margin: 0;
+  }
+}
+
+.addUserIconContainer {
+  display: flex;
+  background-color: #eceefe;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+@media (max-width: 500px) {
+  .dialogMainContainer {
+    width: unset;
+  }
+}

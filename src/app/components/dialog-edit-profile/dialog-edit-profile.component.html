@@ -1,0 +1,30 @@
+<div class="profileContainer">
+    <div class="profileHeader">
+        <p>Edit your profile</p>
+        <div mat-dialog-close title="Close window"></div>
+    </div>
+    <img *ngIf="user?.photoURL" class="userImgEditProfile" [src]="user?.photoURL" [matMenuTriggerFor]="imageMenu" (error)="retryLoadImage()">
+    <mat-menu #imageMenu="matMenu">
+        <div *ngFor="let imageUrl of user_images">
+            <button mat-menu-item (click)="changeImage(imageUrl)">
+                <img [src]="imageUrl" class="menu-image">
+            </button>
+        </div>
+    </mat-menu>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="inputHeadline">
+            <img class="accountIcon" src="assets/img/icons/account_circle.svg" alt="Account icon">
+            <span>Fullname</span>
+        </div>
+        <input type="text" formControlName="displayName" >
+        <div class="inputHeadline">
+            <img class="mailIcon" src="assets/img/icons/mail_icon_profile.svg" alt="Mail Icon">
+            <span>Email Address</span>
+        </div>
+        <input type="email" formControlName="email" >
+        <div class="buttonContainer">
+            <button class="cancelBtn">Cancel</button>
+            <button type="submit" class="submitBtn">Submit</button>
+        </div>
+    </form>
+</div>

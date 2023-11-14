@@ -1,0 +1,211 @@
+@import "../../shared/variables.scss";
+
+.dialogMainContainer {
+  width: 650px;
+}
+
+.dialogTopContainer {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dialogTopChildContainer {
+  @include align_items_center;
+  gap: 10px;
+
+  p {
+    @include font_size_weight(24px, 700);
+    margin: 0;
+  }
+}
+
+.closeIconContainer {
+  display: flex;
+  padding: 8px;
+  border-radius: 50%;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+  }
+
+  img {
+    &:hover {
+      @include button_hover;
+      transform: scale(1.1);
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%) saturate(2764%) hue-rotate(230deg) brightness(99%)
+        contrast(91%);
+    }
+  }
+}
+
+.dialogMiddleContainer {
+  border: 1px solid #adb0d9;
+  border-radius: 20px;
+  margin: 0px 25px 0 25px;
+  padding: 25px;
+  font-family: Nunito, sans-serif !important;
+}
+
+.inputContainer {
+  position: relative;
+
+  input {
+    @include font_size_weight(18px, 400);
+    width: 500px;
+    padding: 13px 50px 13px 50px;
+    resize: none;
+    color: #686868;
+    border: 1px solid #adb0d9;
+    border-radius: 40px;
+    outline: unset;
+    font-family: Nunito, sans-serif !important;
+    @include focus_input_or_textarea;
+    @include hover_input_or_textarea;
+  }
+
+  img {
+    width: 18px;
+    position: absolute;
+    top: 18px;
+    left: 22px;
+  }
+}
+
+.textChannelNameAndEditContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.textChannelName {
+  @include font_size_weight(18px, 700);
+  color: #000000;
+  margin: 0;
+}
+
+.textEdit {
+  @include font_size_weight(18px, 600);
+  background-color: white;
+  border: unset;
+  color: #535af1;
+  margin: 0;
+
+  &:hover {
+    @include button_hover;
+    font-weight: 700;
+    transform: scale(1.05);
+    color: #444df2;
+  }
+}
+
+.channelNameAndHashtagIconContainer {
+  @include align_items_center;
+  gap: 10px;
+
+  img {
+    width: 18px;
+  }
+
+  p {
+    @include font_size_weight(18px, 400);
+    color: #000000;
+    margin: 0;
+  }
+}
+
+.dialogBottomContainer {
+  border: 1px solid #adb0d9;
+  border-radius: 20px;
+  margin: 20px 25px 0 25px;
+  padding: 25px;
+  font-family: Nunito, sans-serif !important;
+
+  hr {
+    margin: 25px 0 25px 0;
+    border: 1px solid #adb0d9;
+  }
+}
+
+.textCreatedBy {
+  @include font_size_weight(18px, 700);
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.userName {
+  @include font_size_weight(24px, 400);
+  color: #535af1;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 25px;
+
+  button {
+    @include button_primary;
+    @include font_size_weight(18px, 700);
+    border-radius: 25px;
+    padding: 25px;
+    font-family: Nunito, sans-serif !important;
+  }
+}
+
+.removeBorder {
+  border: unset;
+}
+
+.translateToTop {
+  transition: all 125ms ease-in-out;
+  transform: translate(0, -10px);
+}
+
+.translateToTBottom {
+  transition: all 125ms ease-in-out;
+  transform: translate(0, 0);
+}
+
+.disableSaveBtn {
+  color: gray;
+
+  &:hover {
+    cursor: unset;
+    pointer-events: none;
+    color: gray;
+    transform: unset;
+  }
+}
+
+.disableLeaveChannelBtn {
+  background-color: gray !important;
+
+  &:hover {
+    cursor: unset;
+    pointer-events: none;
+    color: gray;
+    transform: unset;
+  }
+}
+
+@media (max-width: 820px) {
+  .dialogMainContainer {
+    width: unset;
+  }
+}
+
+/////////////////////// landscape design start here ///////////////////////////
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .dialogBottomContainer {
+    padding: 10px;
+  }
+  .dialogMiddleContainer {
+    padding: 10px;
+  }
+  .dialogTopContainer {
+    padding: 15px;
+  }
+}

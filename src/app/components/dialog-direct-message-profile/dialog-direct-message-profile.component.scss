@@ -1,0 +1,75 @@
+@import "../../shared/variables.scss";
+
+.profileContainer {
+  @include profileContainer;
+  gap: 35px !important;
+}
+
+.profileHeader {
+  @include profileHeader;
+}
+
+.userImgProfile {
+  @include userImg;
+}
+
+.userNameEdit {
+  @include userNameEdit;
+
+  a {
+    border-radius: 30px;
+    transition: text-shadow 225ms ease;
+    padding: 10px 40px;
+
+    &:hover {
+      font-size: 19px;
+      color: #444df2;
+      text-shadow: 0px 0px 1px black;
+      background-color: #eceefe;
+    }
+  }
+}
+
+.status {
+  @include font(20px, 400, 27.28px);
+  @include align_items_center;
+  gap: 10px;
+  margin-right: auto;
+
+  .statusOnline {
+    color: #92C83E;
+  }
+
+  .statusOffline {
+    color: #686868;
+  }
+
+}
+
+.profileBottom {
+  @include profileBottom;
+}
+
+.mailContainer {
+  @include profileIconsText;
+}
+
+.link-button {
+  @include font(18px, 700, 24.55px);
+  @include button_hover;
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #444df2;
+  border-radius: 50px;
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    background-color: #797ef3;
+  }
+}
+
+.link-button img {
+  padding-right: 10px;
+  vertical-align: middle;
+}

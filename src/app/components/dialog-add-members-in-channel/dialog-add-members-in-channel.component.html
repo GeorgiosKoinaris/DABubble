@@ -1,0 +1,60 @@
+<div class="dialogContainer">
+  <div class="dialogMainContainer">
+    <div class="topContainerAddUser">
+      <p>Add People</p>
+
+      <div class="closeIconContainer">
+        <img mat-dialog-close src="assets/img/icons/closeIcon.svg" title="Close window">
+      </div>
+    </div>
+
+    <div class="hashtagIconAndChannelNameContainer">
+      <img src="assets/img/icons/hashtag.svg" />
+      <p>{{ channelService.channel.channelName }}</p>
+    </div>
+
+    <!------------------------- input container start here ---------------------------->
+    <div class="inputContainer">
+      <mat-chip-grid #chipGrid>
+        <input
+          #input
+          type="text"
+          placeholder="enter Name"
+          (click)="checkForDropdown($event)"
+          (input)="checkForDropdown($event)"
+          [matChipInputFor]="chipGrid"
+        />
+        <div class="selectedUserListContainer">
+          <mat-chip-row
+            *ngFor="let user of selectedUsers"
+            (removed)="removeUserFromSelectedUser(user)"
+          >
+            <img src="{{ user.photoURL }}" />
+            <span>{{ user.displayName }}</span>
+            <button matChipRemove [attr.aria-label]="'remove ' + user">
+              <mat-icon color="primary">cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+        </div>
+      </mat-chip-grid>
+
+      <div class="btnContainer">
+        <button mat-dialog-close (click)="addMembersToChannel()">add</button>
+      </div>
+    </div>
+
+    <!------------------------- Dropdown Menu start here ---------------------------->
+    <div *ngIf="showUserDropdown" class="user-dropdown">
+      <div *ngFor="let user of foundUsers" (click)="selectUser(user)">
+        <img [src]="user.photoURL" />
+        <span>{{ user.displayName }}</span>
+      </div>
+    </div>
+
+    <!------------------------- User Exist message start here ---------------------------->
+    <div *ngIf="userAlreadyExists" class="overlay"></div>
+    <div *ngIf="userAlreadyExists" class="popUp">
+      This User is already in the channel
+    </div>
+  </div>
+</div>

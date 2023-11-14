@@ -1,0 +1,146 @@
+@import "../../shared/variables.scss";
+
+.matDrawerMainContainer {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+}
+
+.sidenav {
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+  transition: width 125ms ease;
+  position: relative;
+}
+
+/* Class to hide the sidenav */
+.hidden {
+  width: 0 !important;
+  overflow: hidden;
+  margin-left: -20px;
+}
+
+.routerContainer {
+  width: 100%;
+}
+
+/////////////////style for toggle Button///////////////////////////
+
+.containerMenuBtn {
+  @include align_items_center;
+  gap: 10px;
+  width: 260px;
+  position: absolute;
+  bottom: 200px;
+  left: -130px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transform: rotate(-90deg);
+  box-shadow: -4px 4px 7px 0px #00000033;
+  background-color: white;
+  padding: 15px;
+
+  &:hover {
+    @include button_hover;
+
+    p {
+      color: #535af1;
+    }
+
+    img {
+      filter: brightness(0) saturate(100%) invert(27%) sepia(65%)
+        saturate(4594%) hue-rotate(234deg) brightness(97%) contrast(96%);
+    }
+  }
+
+  p {
+    @include font_size_weight(20px, 500);
+    margin: 0;
+  }
+
+  img {
+    transform: rotate(90deg);
+  }
+}
+.containerMenuBtnResponsive {
+  @include width_height(25px, 25px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 90px;
+  left: 0px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transform: rotate(-90deg);
+  box-shadow: -4px 4px 7px 0px #00000033;
+  background-color: #eceefe;
+  border: 1px solid lightgray;
+  padding: 15px;
+
+  &:hover {
+    @include button_hover;
+
+    img {
+      filter: brightness(0) saturate(100%) invert(27%) sepia(65%)
+        saturate(4594%) hue-rotate(234deg) brightness(97%) contrast(96%);
+    }
+  }
+
+  img {
+    transform: rotate(90deg);
+  }
+}
+
+/////////////////////// responsive design start here ///////////////////////////
+
+@media (max-width: 1210px) {
+  .sidenav {
+    width: 250px;
+  }
+}
+@media (max-width: 920px) {
+  app-thread {
+    width: 100%;
+  }
+  .hideRouter {
+    display: none;
+  }
+}
+
+//////////////////////start media design here/////////////////////
+@media (max-width: 630px) {
+  .matDrawerMainContainer {
+    height: calc(100vh - 80px);
+    padding: 0;
+    gap: 0;
+  }
+  .containerMenuBtn {
+    display: none;
+  }
+  .sidenav {
+    width: 100%;
+    border-radius: unset;
+  }
+  .hidden {
+    margin-left: unset;
+  }
+}
+
+/////////////////////// landscape design start here ///////////////////////////
+
+@media (orientation: landscape) and (max-height: 1050px) {
+  .matDrawerMainContainer {
+    padding: 10px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 585px) {
+  .containerMenuBtn {
+    display: none;
+  }
+  .containerMenuBtnResponsive {
+    display: flex;
+  }
+}

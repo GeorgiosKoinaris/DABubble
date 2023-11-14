@@ -1,0 +1,48 @@
+<app-header></app-header>
+
+<div class="matDrawerMainContainer">
+  <app-sidenav class="sidenav" [ngClass]="{ hidden: !this.messageService.isSidenavOpen }"></app-sidenav>
+
+  <div class="routerContainer" [ngClass]="{ hideRouter: threadService.threadAreClosed }"
+    *ngIf="this.messageService.chatOpen">
+    <router-outlet></router-outlet>
+  </div>
+  <app-thread *ngIf="threadService.threadAreClosed && this.messageService.chatOpen"></app-thread>
+</div>
+
+<!------------------------- Menu Button start here --------------------------->
+<div (click)="this.messageService.toggleSidenav()" class="containerMenuBtn">
+  <p [ngClass]="{
+      'd-none': this.messageService.isSidenavOpen,
+      show: !this.messageService.isSidenavOpen
+    }">
+    open Workspace Menu
+  </p>
+  <img [ngClass]="{
+      'd-none': this.messageService.isSidenavOpen,
+      show: !this.messageService.isSidenavOpen
+    }" src="assets/img/icons/openWorkspaceMenuIcon.svg" />
+
+  <p [ngClass]="{
+      show: this.messageService.isSidenavOpen,
+      'd-none': !this.messageService.isSidenavOpen
+    }">
+    close Workspace Menu
+  </p>
+  <img [ngClass]="{
+      show: this.messageService.isSidenavOpen,
+      'd-none': !this.messageService.isSidenavOpen
+    }" src="assets/img/icons/closeWorkspaceMenuIcon.svg" />
+</div>
+
+<!------------------------- Menu Button resposive forlandscape start here --------------------------->
+<div (click)="this.messageService.toggleSidenav()" class="containerMenuBtnResponsive">
+  <img [ngClass]="{
+      'd-none': this.messageService.isSidenavOpen,
+      show: !this.messageService.isSidenavOpen
+    }" src="assets/img/icons/openWorkspaceMenuIcon.svg" />
+  <img [ngClass]="{
+      show: this.messageService.isSidenavOpen,
+      'd-none': !this.messageService.isSidenavOpen
+    }" src="assets/img/icons/closeWorkspaceMenuIcon.svg" />
+</div>

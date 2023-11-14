@@ -1,0 +1,171 @@
+@import "../../shared/variables.scss";
+
+.headerContainer {
+  @include space_between_center;
+  position: relative;
+  padding: 10px 30px 0px 40px;
+}
+
+.backArrowDiv {
+  @include align_items_center;
+}
+
+.backArrow {
+  height: 25px;
+}
+
+app-searchbar {
+  width: 100%;
+}
+
+.headerProfileContent {
+  @include align_items_center;
+  @include font(32px, 700, 43.65px);
+  @include button_hover;
+
+  &:hover {
+    color: #444df2;
+
+    .arrowDown {
+      background: url("../../../assets/img/icons/arrow_down_hover.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .arrowDown {
+    @include width_height(40px, 40px);
+    background: url("../../../assets/img/icons/arrow_down.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.userName {
+  padding-right: 15px;
+  text-align: right;
+}
+
+.userImg {
+  @include width_height(75px, 75px);
+  border-radius: 100%;
+  margin: 15px;
+}
+
+.userIconWrapper {
+  position: relative;
+}
+
+.statusIcon {
+  position: absolute;
+  bottom: 30px;
+  right: 17px;
+  height: 17px;
+}
+
+.dropdownMenu {
+  @include flex_column_center;
+  @include font(24px, 600, 32.74px);
+  background-color: white;
+  gap: 25px;
+  position: absolute;
+  top: 120px;
+  right: 38px;
+  min-width: 160px;
+  min-height: 150px;
+  padding: 25px 16px;
+  z-index: 3;
+  border-radius: 30px 0 30px 30px;
+
+  a {
+    @include button_hover;
+    color: black;
+    text-decoration: none;
+    display: block;
+    border-radius: 30px;
+    padding: 10px 40px;
+
+    &:hover {
+      font-size: 25px;
+      color: #444df2;
+      text-shadow: 0px 0px 1px black;
+      background-color: #eceefe;
+    }
+  }
+}
+
+.menuBackground {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.headerChatMobile {
+  cursor: pointer;
+}
+
+@media (max-width: 1080px) {
+  .headerContainer {
+    .logoImg {
+      width: 210px;
+    }
+  }
+  .headerProfileContent {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 960px) {
+  .userName {
+    display: none;
+  }
+}
+
+@media (max-width: 770px) {
+  .headerContainer {
+    .logoImg {
+      width: 170px;
+    }
+  }
+
+  .userImg {
+    @include width_height(60px, 60px);
+  }
+}
+
+@media (max-width: 630px) {
+  .headerContainer {
+    height: 70px;
+  }
+}
+
+@media (max-width: 410px) {
+  .arrowDown {
+    display: none;
+  }
+}
+
+@media (max-width: 340px) {
+  .headerContainer {
+    padding: 10px 25px 0px 25px;
+
+    .logoImg {
+      width: 140px;
+    }
+  }
+  .userImg {
+    @include width_height(50px, 50px);
+  }
+}
+
+/////////////////////// landscape design start here ///////////////////////////
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .headerContainer {
+    height: 75px;
+  }
+}

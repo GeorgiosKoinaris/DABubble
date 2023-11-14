@@ -1,0 +1,646 @@
+@import "app/shared/variables.scss";
+// @import "@ctrl/ngx-emoji-mart/picker";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.snow.css";
+@import "~quill-mention/dist/quill.mention.min.css";
+@import "quill-emoji/dist/quill-emoji.css";
+
+/* nunito-regular - latin */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/nunito-v25-latin-regular.woff2") format("woff2");
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  font-family: Nunito, sans-serif !important;
+  background-color: #eceefe;
+}
+
+app-message {
+  position: relative;
+
+  &:hover {
+    .containerEmojis {
+      transition: all 225ms ease-in-out;
+      display: flex !important;
+    }
+  }
+}
+
+app-imprint {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+app-data-protection {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue-text {
+  color: blue;
+}
+
+/************************************ Change Global Style from MatDialog ************************************/
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-bottom-right-radius: 30px !important;
+  border-bottom-left-radius: 30px !important;
+  box-shadow: 0 6px 10px 0 #00000033 !important;
+}
+
+.mdc-dialog__surface {
+  overflow-y: visible !important;
+}
+
+/************************************ Change Global Style from MatDialog ************************************/
+
+/************************************ Styles for the Scrollbar ************************************/
+
+/* the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* the draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: none;
+}
+
+/************************************ Styles for the Scrollbar ************************************/
+
+/************************************ Change Global Style from quill-editor ************************************/
+.quill-editor-textarea {
+  border: 1px solid #adb0d9;
+  border-radius: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 15px;
+  height: 130px;
+
+  &:hover {
+    border-radius: 20px;
+    border: 1px solid #797ef3;
+  }
+}
+
+.ql-editor.ql-blank::before {
+  font-family: Nunito, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #686868;
+}
+
+.ql-editor p,
+.ql-editor ol,
+.ql-editor ul,
+.ql-editor pre,
+.ql-editor blockquote,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3,
+.ql-editor h4,
+.ql-editor h5,
+.ql-editor h6 {
+  font-size: 18px;
+  padding-bottom: 40px;
+  font-family: Nunito, sans-serif;
+}
+
+.ql-toolbar.ql-snow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: unset;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  border: unset;
+  max-height: 300px;
+  padding-bottom: 55px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/******** global Style from Direct-Message quill-editor   *********/
+
+.user-dropdown-container {
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.user-dropdown-image {
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.user-dropdown-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 25px;
+
+  span {
+    white-space: nowrap;
+    width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.textarea-emoji-control {
+  display: none;
+}
+
+#textarea-emoji {
+  right: unset;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+  overflow: unset;
+}
+
+/******** global Style from Direct-Message quill-editor   *********/
+
+/************************************ Change Global Style from quill-editor ************************************/
+.ql-container {
+  border: unset !important;
+}
+
+.ql-editor p {
+  padding-bottom: 0;
+}
+
+.ql-mention-list-container {
+  width: unset;
+  max-width: 280px !important;
+  max-height: 480px;
+}
+
+.new-message-top {
+  .ql-mention-list-container {
+    top: 0 !important;
+  }
+}
+
+.new-message-top-max-height {
+  .ql-mention-list-container {
+    max-height: 250px !important;
+  }
+}
+
+.new-message-bottom {
+  .ql-mention-list-container {
+    top: -240px !important;
+    max-height: 250px !important;
+  }
+}
+
+/************************************ Styles for the message container ************************************/
+// .messageMainContainer {
+//   height: 70vh !important;
+// }
+.messageMainContainer {
+  height: 53vh !important;
+}
+
+.scrollableContainer {
+  height: 330px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      display: flex;
+    }
+  }
+}
+
+.messageContainer {
+  min-height: 300px;
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      display: flex;
+    }
+  }
+}
+
+.messageContainerError {
+  color: red;
+  position: absolute;
+  top: -25px;
+}
+
+.displayMessagesContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px 0px 20px 20px;
+  margin-top: 20px;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background-color: #eceefe;
+
+    .message {
+      color: black;
+      background-color: white;
+    }
+
+    .lastAnswer {
+      color: black;
+    }
+
+    .containerEmojis {
+      display: flex !important;
+      // position: relative;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}
+
+.messageChildContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userImg {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+
+.containerUserNameAndTime {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nameTimeContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  p:first-child {
+    @include font(18px, 700, 24.55px);
+  }
+}
+
+.message {
+  @include font(18px, 400, 24.55px);
+  background-color: #eceefe;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  padding: 15px;
+}
+
+.senderMessage {
+  color: white;
+  background-color: #797ef3;
+}
+
+.completeEmoji {
+  padding: 8px;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background-color: #eceefe;
+  }
+}
+
+.handsUpEmoji {
+  padding: 8px;
+  border-radius: 50%;
+
+  &:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background-color: #eceefe;
+  }
+}
+
+.containerAddEmojiIcon {
+  display: flex;
+  padding: 8px;
+  border-radius: 50%;
+
+  img {
+    &:hover {
+      cursor: pointer;
+      transition: all 225ms ease-in-out;
+      transform: scale(1.05);
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background-color: #eceefe;
+  }
+}
+
+.containerAnswerOnThreadIcon {
+  display: flex;
+  padding: 8px;
+  border-radius: 50%;
+
+  img {
+    &:hover {
+      cursor: pointer;
+      transition: all 225ms ease-in-out;
+      transform: scale(1.05);
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    transition: all 225ms ease-in-out;
+    background-color: #eceefe;
+  }
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  span {
+    font-weight: 400;
+    font-size: 18px;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 0;
+    border: 1px solid #adb0d9;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  hr {
+    width: 100%;
+    margin: 0;
+    transform: rotate(180deg);
+    border-color: #adb0d9;
+  }
+}
+
+.containerPopUp {
+  display: flex;
+  position: absolute;
+  bottom: 45px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #adb0d9;
+  padding: 5px 10px 5px 10px;
+  border-radius: 20px;
+
+  img {
+    padding: 8px;
+    border-radius: 50%;
+
+    &:hover {
+      @include button_hover;
+      background-color: #eceefe;
+    }
+  }
+}
+
+.containerThreePointsIcon {
+  display: flex;
+  border-radius: 50%;
+  padding: 8px;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+  }
+
+  img {
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+    }
+  }
+}
+
+.popUpEditMessage {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+  z-index: 2;
+  padding: 10px 20px 10px 20px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 6px 14px 0 rgb(0, 0, 0, 0.2);
+  background-color: white;
+
+  p {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    border-radius: 100px;
+    font-family: Nunito, sans-serif !important;
+    font-weight: 500;
+    font-size: 20px;
+
+    &:hover {
+      background-color: #eceefe;
+      color: #535af1;
+      font-weight: 700;
+    }
+  }
+}
+
+.messageIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 20px;
+  background-color: white;
+  border: 1px solid #adb0d9;
+
+  img {
+    width: 20px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.messageDisplayiconContainer {
+  position: absolute;
+  // top: 40px;
+  right: 30px;
+  bottom: -15px;
+  display: flex;
+  gap: 5px;
+}
+
+.attachedFile {
+  position: relative;
+}
+
+.uploadedImageInMessage {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+
+  &:hover + .deleteFileInMessage {
+    display: flex;
+  }
+}
+
+.deleteFileInMessage {
+  display: none;
+  width: 20px;
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid lightgray;
+
+  &:hover {
+    @include button_hover;
+    display: flex;
+  }
+}
+
+/************************************ Styles for the message container ************************************/
+
+.d-none {
+  display: none !important;
+}
+
+.show {
+  display: flex !important;
+}
+
+/************************************ Styles for material chips ************************************/
+
+mat-chip-row {
+  background-color: #eceefe !important;
+  padding: 5px;
+  img {
+    width: 35px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: 5px;
+  }
+}
+
+.mat-mdc-chip-action-label {
+  display: flex;
+  align-items: center;
+}
+
+/////////////////////// responsive design start here ///////////////////////////
+
+@media (max-width: 782px) {
+  .ql-editor.ql-blank::before {
+    font-size: 15px;
+  }
+}
+@media (max-width: 713px) {
+  .ql-editor.ql-blank::before {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 630px) {
+  .ql-editor.ql-blank::before {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 462px) {
+  .ql-editor.ql-blank::before {
+    font-size: 15px;
+  }
+}
+@media (max-width: 405px) {
+  .ql-editor.ql-blank::before {
+    font-size: 12px;
+  }
+}
+
+.editMessageContainer {
+  display: flex;
+  input {
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 340px) {
+  .ql-mention-list-container {
+    max-width: 250px !important;
+  }
+}
+
+@media (max-width: 300px) {
+  .ql-mention-list-container {
+    max-width: 220px !important;
+  }
+}
+
+/////////////////////// landscape design start here ///////////////////////////
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .quill-editor-textarea {
+    height: 100px;
+  }
+}

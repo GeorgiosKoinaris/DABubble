@@ -1,0 +1,263 @@
+@import "../../shared/variables.scss";
+
+//////////////// general classes ///////////////////////
+
+.padding {
+  padding: 30px;
+}
+
+//////////////// specific classes ///////////////////////
+.dialogHead {
+  @include space_between_center;
+
+  p {
+    @include font_size_weight(24px, 700);
+    margin: 0;
+  }
+}
+
+.closeIconContainer {
+  display: flex;
+  padding: 8px;
+  border-radius: 50%;
+
+  &:hover {
+    @include button_hover;
+    background-color: #eceefe;
+  }
+
+  img {
+    &:hover {
+      @include button_hover;
+      transform: scale(1.1);
+      filter: brightness(0) saturate(100%) invert(30%) sepia(99%)
+        saturate(2764%) hue-rotate(230deg) brightness(99%) contrast(91%);
+    }
+  }
+}
+
+.textContainer {
+  @include font_size_weight(18px, 400);
+  margin: 25px 0 25px 0;
+}
+
+.inputHeadAndContainer {
+  padding-bottom: 20px;
+
+  p {
+    @include font_size_weight(18px, 700);
+  }
+}
+
+.FirstInputContainer {
+  @include width_height(100%, 70px);
+  @include align_items_center;
+  position: relative;
+  margin-right: auto;
+
+  img {
+    position: absolute;
+    left: 20px;
+    height: 14px;
+  }
+
+  input {
+    @include width_height(100%, 14px);
+    @include font_size_weight(18px, 400);
+    border: 1px solid #adb0d9;
+    background-color: white;
+    border-radius: 100px;
+    padding: 28px 0 28px 40px;
+    box-sizing: border-box;
+    transition: all 125ms ease-in-out;
+    color: #686868;
+
+    &:focus {
+      outline: 1px solid #444df2;
+    }
+
+    &:hover {
+      border: 1px solid #444df2;
+    }
+
+    ::placeholder {
+      @include font(18px, 400, 32.74px);
+    }
+  }
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    @include font_size_weight(18px, 700);
+    background-color: #444df2;
+    color: white !important;
+    border-radius: 25px;
+    padding: 25px;
+    font-family: Nunito, sans-serif !important;
+
+    &:hover {
+      transition: all 225ms ease-in-out;
+      background-color: #797ef3;
+    }
+  }
+}
+
+.btnDisabled {
+  @include button_primary_disabled;
+}
+
+///////////////////// style for adding user to channel div ////////////////////////
+
+.dialogContainer {
+  padding: 30px;
+  width: 500px;
+}
+
+.dialogHead {
+  @include space_between_center;
+
+  p {
+    @include font_size_weight(24px, 700);
+    margin: 0;
+  }
+}
+
+.flex-column {
+  @include flex_direction_column;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+
+  button {
+    @include font_size_weight(18px, 700);
+    background-color: #444df2;
+    color: white !important;
+    border-radius: 25px;
+    padding: 25px;
+    font-family: Nunito, sans-serif !important;
+
+    &:hover {
+      transition: all 225ms ease-in-out;
+      background-color: #797ef3;
+    }
+  }
+}
+
+.hiddenInputContainer {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.inputContainer {
+  margin-bottom: 10px;
+
+  input {
+    @include font_size_weight(18px, 400);
+    border: 1px solid #adb0d9;
+    min-width: 100%;
+    height: 14px;
+    background-color: white;
+    border-radius: 100px;
+    padding: 28px 0 28px 20px;
+    box-sizing: border-box;
+    transition: all 125ms ease-in-out;
+    color: #686868;
+
+    &:focus {
+      outline: 1px solid #444df2;
+    }
+
+    &:hover {
+      border: 1px solid #444df2;
+    }
+
+    ::placeholder {
+      @include font(18px, 400, 32.74px);
+    }
+  }
+}
+
+.user-dropdown {
+  @include flex_direction_column;
+  gap: 10px;
+  position: absolute;
+  background: white;
+  z-index: 999;
+  min-width: 200px;
+  max-height: 160px;
+  overflow-y: auto;
+  left: 50px;
+  top: 230px;
+  border: 1px solid #adb0d9;
+  border-radius: 0px 20px 20px 20px;
+  padding: 10px;
+
+  div {
+    @include align_items_center;
+    gap: 10px;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      transition: all 225ms ease-in-out;
+      background-color: #eceefe;
+      border-radius: 20px;
+    }
+  }
+
+  img {
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+  }
+
+  span {
+    @include font(18px, 400, 20px);
+  }
+}
+
+.selectedUserListContainer {
+  padding: 5px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.32
+  ); /* Hintergrundfarbe mit Transparenz für den Dunkelheitseffekt */
+  z-index: 999; /* Stelle sicher, dass das Overlay über allem anderen Inhalt liegt */
+}
+
+.popUp {
+  @include font_size_weight(18px, 400);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+@media (max-width: 700px) {
+  .dialogContainer {
+    width: unset;
+  }
+}
